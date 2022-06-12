@@ -1,16 +1,33 @@
+import Product from "../Product/Product.js";
 import "./Products.css";
-//  import Products from './components/products/Products.js';
-import Product from "../Product/Product";
 
-const Products = ({ products }) => {
+const Products = ({ collection }) => {
   return (
     <section className="products">
-      {products.map(({ id, title, price, image }) => {
-        return (
-          <Product key={id} id={id} title={title} price={price} image={image} />
-        );
-      })}
+      {collection.map(
+        ({
+          image,
+          id,
+          title,
+          category,
+          price,
+          description,
+          rating: { rate, count },
+        }) => (
+          <Product
+            image={image}
+            key={id}
+            title={title}
+            category={category}
+            count={count}
+            rate={rate}
+            price={price}
+            description={description}
+          />
+        )
+      )}
     </section>
   );
 };
+
 export default Products;
